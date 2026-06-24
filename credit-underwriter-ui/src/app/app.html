@@ -1,0 +1,51 @@
+<div class="app-layout">
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="app-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Credit<span>Underwriter.ai</span></span>
+      </div>
+      <nav class="header-nav">
+        <button 
+          class="nav-tab-btn" 
+          [class.active]="activeTab() === 'dashboard'" 
+          (click)="selectTab('dashboard')">
+          Dashboard
+        </button>
+        <button 
+          class="nav-tab-btn" 
+          [class.active]="activeTab() === 'form'" 
+          (click)="selectTab('form')">
+          New Application
+        </button>
+        <button 
+          class="nav-tab-btn" 
+          [class.active]="activeTab() === 'chat'" 
+          (click)="selectTab('chat')">
+          AI Credit Advisor
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Body Content -->
+  <main class="app-main">
+    <div class="main-container">
+      <app-dashboard 
+        *ngIf="activeTab() === 'dashboard'" 
+        (onCreateNew)="selectTab('form')">
+      </app-dashboard>
+      
+      <app-loan-form 
+        *ngIf="activeTab() === 'form'" 
+        (onSubmitSuccess)="selectTab('dashboard')"
+        (onCancel)="selectTab('dashboard')">
+      </app-loan-form>
+      
+      <app-chat 
+        *ngIf="activeTab() === 'chat'">
+      </app-chat>
+    </div>
+  </main>
+</div>

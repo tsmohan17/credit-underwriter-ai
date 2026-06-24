@@ -1,0 +1,24 @@
+spring:
+  # In-memory H2 Database configuration for dev environment
+  datasource:
+    url: jdbc:h2:mem:underwritingdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+  # Enable Kafka listener auto-startup on dev now that Kafka is running in Docker
+  kafka:
+    listener:
+      auto-startup: true
+    producer:
+      properties:
+        max.block.ms: 1500

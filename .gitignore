@@ -1,0 +1,15 @@
+# Java/Maven
+**/target/
+**/*.class
+
+# Angular/Node
+**/node_modules/
+**/.angular/
+**/dist/
+
+# IDE/System
+**/.idea/
+**/*.iml
+**/.vscode/
+**/.DS_Store
+**/Thumbs.db
